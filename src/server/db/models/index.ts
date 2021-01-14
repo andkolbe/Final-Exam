@@ -1,4 +1,4 @@
-export interface IBook {
+export interface TBook {
     id?: number;
     categoryid?: number;
     title?: string;
@@ -7,12 +7,12 @@ export interface IBook {
     _created?: Date;
 }
 
-export interface ICategory {
+export interface TCategory {
     id?: number;
     name?: string;
 }
 
-export interface IUser {
+export interface TUser {
     id?: number;
     name?: string;
     password?: string;
