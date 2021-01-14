@@ -1,19 +1,27 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import api from '../utils/api-service';
+import api, { TOKEN_KEY } from '../utils/api-service';
 
 const Login: React.FC<LoginProps> = props => {
 
     const history = useHistory();
 
-    const [] = useState();
+    const [email, setEmail] = useState('andrew@andrew.com');
+    const [password, setPassword] = useState('password123');
 
-    useEffect(() => {}, []);
+    const login = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        const token = await api('/auth/login', 'POST', {email, password})
+        localStorage.setItem(TOKEN_KEY, token);
+        history.push('/');
+    }
 
     return (
         <div>
-            <h1 className="text-center">Login</h1>
+            <input value={email} onChange={e => setEmail(e.target.value)} placeholder='email' type='text'/>
+            <input value={password} onChange={e => setPassword(e.target.value)} placeholder='password' type='text'/>
+            <button onClick={login}>Login</button>
         </div>
     );
 }
