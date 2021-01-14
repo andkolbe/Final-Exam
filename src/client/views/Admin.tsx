@@ -49,7 +49,7 @@ const Admin: React.FC<AdminProps> = props => {
                 ))}
             </select>
             <button onClick={() => history.goBack()}>Back to Details</button>
-            <button onClick={edit}>Edit</button>
+            <button onClick={edit}>Submit Edit</button>
         </div>
     );
 }
